@@ -17,7 +17,7 @@ if (process.argv.length !== 3) {
 const wget = async () => {
   try {
     const response = await axios.get(process.argv[2])
-    fsPromise.writeFile('index.html', response.data)
+    fsPromise.writeFile('index.html', response.data) // <---  Besoin de await ici si utilisation de fsPromise.stat()
     console.log(`Fichier enregistré dans "index.html"\nTaille du fichier : ${response.headers['content-length']}`)
   } catch (e) {
     console.log(e.message)
